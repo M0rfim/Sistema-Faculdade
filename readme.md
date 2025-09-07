@@ -31,7 +31,9 @@ Após o login, escolha uma das opções de cadastro:
 **Contato:**  
 - Telefone: [________]  
 - Celular: [________]  
-- E-mail: [____________________]  
+- E-mail: [____________________]
+
+- [Cadastrar]
 
 ---
 
