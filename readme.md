@@ -129,3 +129,58 @@ graph TD
 
     classDef usecase fill:#f9f,stroke:#333,stroke-width:2px;
     class uc1,uc2,uc3,uc4,uc5,uc6 usecase;
+## Diagrama de Classe (Corrigido)
+
+```mermaid
+classDiagram
+    class Pessoa {
+        +String nome
+        +Date dataNascimento
+        +String endereco
+        +String telefone
+        +String email
+        +validarDocumento(): boolean
+    }
+
+    class PessoaFisica {
+        +String cpf
+        +String rg
+    }
+
+    class PessoaJuridica {
+        +String cnpj
+        +String razaoSocial
+        +String inscricaoEstadual
+    }
+
+    class Professor {
+        +String idProfessor
+        +String areaAtuacao
+        +List<Disciplina> disciplinas
+    }
+
+    class Aluno {
+        +String matricula
+        +String statusAcademico
+        +Curso curso
+    }
+
+    class Disciplina {
+        +String codigo
+        +String nome
+        +String ementa
+    }
+
+    class Curso {
+        +String codigoCurso
+        +String nomeCurso
+    }
+
+    Pessoa <|-- PessoaFisica
+    Pessoa <|-- PessoaJuridica
+    PessoaFisica <|-- Professor
+    PessoaFisica <|-- Aluno
+
+    Professor "1" -- "*" Disciplina : ensina
+    Aluno "*" -- "1" Curso : cursa
+
