@@ -1,5 +1,3 @@
-# Sistema-Faculdade
-
 # 🎓 Sistema de Cadastro - Faculdade
 
 ---
@@ -98,4 +96,34 @@ Após o login, escolha uma das opções de cadastro:
 
 **Graduação:**  
 - Curso: [____________________]  
-- Disciplina: [____________________]  
+- Disciplina: [____________________]
+
+---
+
+## Diagrama de Caso de Uso (Corrigido)
+
+```mermaid
+graph TD
+    subgraph Sistema de Gestão da Universidade
+        uc1["Cadastrar Pessoa Física"]
+        uc2["Cadastrar Pessoa Jurídica"]
+        uc3["Cadastrar Professor"]
+        uc4["Cadastrar Fornecedor"]
+        uc5["Cadastrar Aluno"]
+        uc6["(Validar Documento)"]
+    end
+
+    ator["Administrador"] --> uc1
+    ator --> uc2
+    ator --> uc3
+    ator --> uc4
+    ator --> uc5
+
+    uc1 --> uc6
+    uc2 --> uc6
+    uc3 --> uc6
+    uc4 --> uc6
+    uc5 --> uc6
+
+    classDef usecase fill:#f9f,stroke:#333,stroke-width:2px;
+    class uc1,uc2,uc3,uc4,uc5,uc6 usecase;
