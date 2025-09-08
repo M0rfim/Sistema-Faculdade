@@ -48,7 +48,8 @@ Após o login, escolha uma das opções de cadastro:
 **Contato:**  
 - Telefone: [________]  
 - Celular: [________]  
-- E-mail: [____________________]  
+- E-mail: [____________________]
+- [Cadastrar]
 
 ---
 
@@ -65,7 +66,8 @@ Após o login, escolha uma das opções de cadastro:
 
 **Graduação:**  
 - Curso: [____________________]  
-- Disciplina: [____________________]  
+- Disciplina: [____________________]
+- [Cadastrar]
 
 ---
 
@@ -79,7 +81,8 @@ Após o login, escolha uma das opções de cadastro:
 **Contato:**  
 - Telefone: [________]  
 - Celular: [________]  
-- E-mail: [____________________]  
+- E-mail: [____________________]
+- [Cadastrar]
 
 ---
 
@@ -99,6 +102,7 @@ Após o login, escolha uma das opções de cadastro:
 **Graduação:**  
 - Curso: [____________________]  
 - Disciplina: [____________________]
+- [Cadastrar]
 
 ---
 
