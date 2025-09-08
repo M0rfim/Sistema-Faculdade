@@ -112,6 +112,10 @@ Após o login, escolha uma das opções de cadastro:
 
 ## Diagrama Classes
 
+git add diagrama.puml diagrama.png
+git commit -m "Add PlantUML diagram and rendered image"
+git push origin main
+
 
 
 
