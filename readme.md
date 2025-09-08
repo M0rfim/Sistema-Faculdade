@@ -110,6 +110,69 @@ Após o login, escolha uma das opções de cadastro:
 
 <img width="1068" height="207" alt="diagrama de uso de caso" src="https://github.com/user-attachments/assets/b6f763be-ebac-4bf7-af7e-e4e7cad6d129" />
 
+@startuml
+class Pessoa {
+  -id: int
+  -endereco: String
+  -email: String
+  -telefone: String
+}
+
+class PessoaFisica {
+  -cpf: String
+  -rg: String
+  -dataNascimento: Date
+}
+
+class PessoaJuridica {
+  -cnpj: String
+  -razaoSocial: String
+}
+
+class Professor {
+  -disciplinas: List<String>
+  -areaAtuacao: String
+}
+
+class Aluno {
+  -matricula: String
+  -curso: String
+  -statusAcademico: String
+}
+
+class Fornecedor {
+  -produtosServicos: String
+  -dadosFornecimento: String
+}
+
+class Administrador {
+  -login: String
+  -senha: String
+}
+
+class SecretarioAcademico {
+  -login: String
+  -senha: String
+}
+
+class ValidacaoReceitaFederal {
+  +validarCPF(cpf: String): boolean
+  +validarCNPJ(cnpj: String): boolean
+}
+
+Pessoa <|-- PessoaFisica
+Pessoa <|-- PessoaJuridica
+
+PessoaFisica <|-- Professor
+PessoaFisica <|-- Aluno
+PessoaJuridica <|-- Fornecedor
+
+Administrador --> Pessoa
+SecretarioAcademico --> Pessoa
+PessoaFisica --> ValidacaoReceitaFederal
+PessoaJuridica --> ValidacaoReceitaFederal
+@enduml
+
 
 ## Diagrama Classes
 
