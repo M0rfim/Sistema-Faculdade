@@ -108,13 +108,11 @@ Após o login, escolha uma das opções de cadastro:
 
 ## Diagrama de Caso de Uso (Corrigido)
 
+<img width="1068" height="207" alt="diagrama de uso de caso" src="https://github.com/user-attachments/assets/b6f763be-ebac-4bf7-af7e-e4e7cad6d129" />
 
 
 ## Diagrama Classes
 
-git add diagrama.puml diagrama.png
-git commit -m "Add PlantUML diagram and rendered image"
-git push origin main
 
 
 
