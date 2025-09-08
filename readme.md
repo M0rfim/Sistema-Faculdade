@@ -108,91 +108,10 @@ Após o login, escolha uma das opções de cadastro:
 
 ## Diagrama de Caso de Uso (Corrigido)
 
-actor "Administrador" as Adm
-actor "Secretário Acadêmico" as Sec
-actor "Receita Federal" as RF
 
-rectangle "Sistema de Cadastro" {
-  usecase "Cadastrar Pessoa Física" as CPF
-  usecase "Cadastrar Pessoa Jurídica" as CNPJ
-  usecase "Cadastrar Professor" as Prof
-  usecase "Cadastrar Aluno" as Aluno
-  usecase "Cadastrar Fornecedor" as Forn
-}
-
-Adm --> CPF
-Adm --> CNPJ
-Adm --> Prof
-Adm --> Aluno
-Adm --> Forn
-
-Sec --> Prof
-Sec --> Aluno
-
-RF --> CPF
-RF --> CNPJ
 
 ## Diagrama Classes
 
 
-class Pessoa {
-  -id: int
-  -endereco: String
-  -email: String
-  -telefone: String
-}
 
-class PessoaFisica {
-  -cpf: String
-  -rg: String
-  -dataNascimento: Date
-}
-
-class PessoaJuridica {
-  -cnpj: String
-  -razaoSocial: String
-}
-
-class Professor {
-  -disciplinas: List<String>
-  -areaAtuacao: String
-}
-
-class Aluno {
-  -matricula: String
-  -curso: String
-  -statusAcademico: String
-}
-
-class Fornecedor {
-  -produtosServicos: String
-  -dadosFornecimento: String
-}
-
-class Administrador {
-  -login: String
-  -senha: String
-}
-
-class SecretarioAcademico {
-  -login: String
-  -senha: String
-}
-
-class ValidacaoReceitaFederal {
-  +validarCPF(cpf: String): boolean
-  +validarCNPJ(cnpj: String): boolean
-}
-
-Pessoa <|-- PessoaFisica
-Pessoa <|-- PessoaJuridica
-
-PessoaFisica <|-- Professor
-PessoaFisica <|-- Aluno
-PessoaJuridica <|-- Fornecedor
-
-Administrador --> Pessoa
-SecretarioAcademico --> Pessoa
-PessoaFisica --> ValidacaoReceitaFederal
-PessoaJuridica --> ValidacaoReceitaFederal
 
