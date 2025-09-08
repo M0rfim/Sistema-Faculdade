@@ -134,7 +134,7 @@ RF --> CNPJ
 
 ## Diagrama Classes
 
-@startuml
+
 class Pessoa {
   -id: int
   -endereco: String
@@ -195,4 +195,4 @@ Administrador --> Pessoa
 SecretarioAcademico --> Pessoa
 PessoaFisica --> ValidacaoReceitaFederal
 PessoaJuridica --> ValidacaoReceitaFederal
-@enduml
+
