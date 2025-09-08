@@ -1,0 +1,26 @@
+@startuml
+actor "Administrador" as Adm
+actor "Secretário Acadêmico" as Sec
+actor "Receita Federal" as RF
+
+rectangle "Sistema de Cadastro" {
+  usecase "Cadastrar Pessoa Física" as CPF
+  usecase "Cadastrar Pessoa Jurídica" as CNPJ
+  usecase "Cadastrar Professor" as Prof
+  usecase "Cadastrar Aluno" as Aluno
+  usecase "Cadastrar Fornecedor" as Forn
+}
+
+Adm --> CPF
+Adm --> CNPJ
+Adm --> Prof
+Adm --> Aluno
+Adm --> Forn
+
+Sec --> Prof
+Sec --> Aluno
+
+RF --> CPF
+RF --> CNPJ
+@enduml
+
