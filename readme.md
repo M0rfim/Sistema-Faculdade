@@ -177,6 +177,75 @@ PessoaJuridica --> ValidacaoReceitaFederal
 ## Diagrama Classes
 
 
+<img width="733" height="679" alt="diagramaaaaaa" src="https://github.com/user-attachments/assets/eda142cf-9a95-41fc-84b2-513a818fe088" />
+
+
+@startuml
+class Pessoa {
+  -id: int
+  -endereco: String
+  -email: String
+  -telefone: String
+}
+
+class PessoaFisica {
+  -cpf: String
+  -rg: String
+  -dataNascimento: Date
+}
+
+class PessoaJuridica {
+  -cnpj: String
+  -razaoSocial: String
+}
+
+class Professor {
+  -disciplinas: List<String>
+  -areaAtuacao: String
+}
+
+class Aluno {
+  -matricula: String
+  -curso: String
+  -statusAcademico: String
+}
+
+class Fornecedor {
+  -produtosServicos: String
+  -dadosFornecimento: String
+}
+
+class Administrador {
+  -login: String
+  -senha: String
+}
+
+class SecretarioAcademico {
+  -login: String
+  -senha: String
+}
+
+class ValidacaoReceitaFederal {
+  +validarCPF(cpf: String): boolean
+  +validarCNPJ(cnpj: String): boolean
+}
+
+Pessoa <|-- PessoaFisica
+Pessoa <|-- PessoaJuridica
+
+PessoaFisica <|-- Professor
+PessoaFisica <|-- Aluno
+PessoaJuridica <|-- Fornecedor
+
+Administrador --> Pessoa
+SecretarioAcademico --> Pessoa
+PessoaFisica --> ValidacaoReceitaFederal
+PessoaJuridica --> ValidacaoReceitaFederal
+@enduml
+
+
+
+
 
 
 
