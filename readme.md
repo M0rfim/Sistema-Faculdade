@@ -244,7 +244,68 @@ PessoaJuridica --> ValidacaoReceitaFederal
 @enduml
 
 
+classDiagram
+    class Pessoa {
+        +nome: String
+        +dataNascimento: Date
+        +endereco: String
+        +telefone: String
+        +email: String
+        +validarDocumento(): boolean
+    }
 
+    class PessoaFisica {
+        -cpf: String
+        -rg: String
+    }
+
+    class PessoaJuridica {
+        -cnpj: String
+        -razaoSocial: String
+        -inscricaoEstadual: String
+    }
+
+    class Professor {
+        -idProfessor: String
+        -areaAtuacao: String
+        -disciplinas: List<Disciplina>
+    }
+
+    class Aluno {
+        -matricula: String
+        -statusAcademico: String
+        -curso: Curso
+    }
+
+    class Fornecedor {
+        -idFornecedor: String
+        -dadosFornecedor: String
+    }
+
+    class Disciplina {
+        -codigo: String
+        -nome: String
+        -ementa: String
+    }
+
+    class Curso {
+        -codigoCurso: String
+        -nomeCurso: String
+    }
+
+    %% Associações (1:N conforme diagrama)
+    Pessoa <|-- PessoaFisica
+    Pessoa <|-- PessoaJuridica
+    Professor o-- Disciplina
+    Disciplina o-- Curso
+
+    Professor --> Aluno : 1:N
+    Aluno --> Curso : 1:1
+
+    Fornecedor --|> Pessoa
+
+    %% Observações de validação
+    Pessoa : +validarDocumento(): boolean
 
 
 
