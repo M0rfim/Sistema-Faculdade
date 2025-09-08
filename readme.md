@@ -108,83 +108,91 @@ Após o login, escolha uma das opções de cadastro:
 
 ## Diagrama de Caso de Uso (Corrigido)
 
-```mermaid
-graph TD
-    subgraph Sistema de Gestão da Universidade
-        uc1["Cadastrar Pessoa Física"]
-        uc2["Cadastrar Pessoa Jurídica"]
-        uc3["Cadastrar Professor"]
-        uc4["Cadastrar Fornecedor"]
-        uc5["Cadastrar Aluno"]
-        uc6["(Validar Documento)"]
-    end
+actor "Administrador" as Adm
+actor "Secretário Acadêmico" as Sec
+actor "Receita Federal" as RF
 
-    ator["Administrador"] --> uc1
-    ator --> uc2
-    ator --> uc3
-    ator --> uc4
-    ator --> uc5
+rectangle "Sistema de Cadastro" {
+  usecase "Cadastrar Pessoa Física" as CPF
+  usecase "Cadastrar Pessoa Jurídica" as CNPJ
+  usecase "Cadastrar Professor" as Prof
+  usecase "Cadastrar Aluno" as Aluno
+  usecase "Cadastrar Fornecedor" as Forn
+}
 
-    uc1 --> uc6
-    uc2 --> uc6
-    uc3 --> uc6
-    uc4 --> uc6
-    uc5 --> uc6
+Adm --> CPF
+Adm --> CNPJ
+Adm --> Prof
+Adm --> Aluno
+Adm --> Forn
 
-    classDef usecase fill:#f9f,stroke:#333,stroke-width:2px;
-    class uc1,uc2,uc3,uc4,uc5,uc6 usecase;
-## Diagrama de Classe (Corrigido)
+Sec --> Prof
+Sec --> Aluno
 
-```mermaid
-classDiagram
-    class Pessoa {
-        +String nome
-        +Date dataNascimento
-        +String endereco
-        +String telefone
-        +String email
-        +validarDocumento(): boolean
-    }
+RF --> CPF
+RF --> CNPJ
 
-    class PessoaFisica {
-        +String cpf
-        +String rg
-    }
+## Diagrama Classes
 
-    class PessoaJuridica {
-        +String cnpj
-        +String razaoSocial
-        +String inscricaoEstadual
-    }
+@startuml
+class Pessoa {
+  -id: int
+  -endereco: String
+  -email: String
+  -telefone: String
+}
 
-    class Professor {
-        +String idProfessor
-        +String areaAtuacao
-        +List<Disciplina> disciplinas
-    }
+class PessoaFisica {
+  -cpf: String
+  -rg: String
+  -dataNascimento: Date
+}
 
-    class Aluno {
-        +String matricula
-        +String statusAcademico
-        +Curso curso
-    }
+class PessoaJuridica {
+  -cnpj: String
+  -razaoSocial: String
+}
 
-    class Disciplina {
-        +String codigo
-        +String nome
-        +String ementa
-    }
+class Professor {
+  -disciplinas: List<String>
+  -areaAtuacao: String
+}
 
-    class Curso {
-        +String codigoCurso
-        +String nomeCurso
-    }
+class Aluno {
+  -matricula: String
+  -curso: String
+  -statusAcademico: String
+}
 
-    Pessoa <|-- PessoaFisica
-    Pessoa <|-- PessoaJuridica
-    PessoaFisica <|-- Professor
-    PessoaFisica <|-- Aluno
+class Fornecedor {
+  -produtosServicos: String
+  -dadosFornecimento: String
+}
 
-    Professor "1" -- "*" Disciplina : ensina
-    Aluno "*" -- "1" Curso : cursa
+class Administrador {
+  -login: String
+  -senha: String
+}
 
+class SecretarioAcademico {
+  -login: String
+  -senha: String
+}
+
+class ValidacaoReceitaFederal {
+  +validarCPF(cpf: String): boolean
+  +validarCNPJ(cnpj: String): boolean
+}
+
+Pessoa <|-- PessoaFisica
+Pessoa <|-- PessoaJuridica
+
+PessoaFisica <|-- Professor
+PessoaFisica <|-- Aluno
+PessoaJuridica <|-- Fornecedor
+
+Administrador --> Pessoa
+SecretarioAcademico --> Pessoa
+PessoaFisica --> ValidacaoReceitaFederal
+PessoaJuridica --> ValidacaoReceitaFederal
+@enduml
